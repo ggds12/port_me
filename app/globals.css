@@ -1,0 +1,385 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), "Iowan Old Style", "Apple Garamond",
+    Baskerville, "Times New Roman", serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Light — warm paper */
+  --color-background: oklch(98.4% 0.005 85);
+  --color-foreground: oklch(18% 0.01 80);
+  --color-muted: oklch(94% 0.007 85);
+  --color-muted-foreground: oklch(48% 0.012 80);
+  --color-subtle: oklch(91% 0.008 85);
+  --color-border: oklch(89% 0.008 85);
+  --color-accent: oklch(64% 0.14 48);
+  --color-accent-foreground: oklch(99% 0.005 85);
+  --color-ring: oklch(64% 0.14 48);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.4rem;
+  --radius-lg: 0.625rem;
+
+  --tracking-tightest: -0.045em;
+  --tracking-tighter: -0.03em;
+  --tracking-mono: -0.01em;
+
+  /* Motion tokens */
+  --motion-fast: 180ms;
+  --motion-default: 320ms;
+  --motion-slow: 600ms;
+  --motion-marquee: 50s;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-firm: cubic-bezier(0.7, 0, 0.84, 0);
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.7s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.dark {
+  --color-background: oklch(15% 0.008 80);
+  --color-foreground: oklch(95% 0.008 85);
+  --color-muted: oklch(20% 0.01 80);
+  --color-muted-foreground: oklch(68% 0.012 80);
+  --color-subtle: oklch(24% 0.012 80);
+  --color-border: oklch(26% 0.012 80);
+  --color-accent: oklch(72% 0.14 55);
+  --color-accent-foreground: oklch(15% 0.008 80);
+  --color-ring: oklch(72% 0.14 55);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+    scroll-margin-top: 6rem;
+    scroll-margin-bottom: 3rem;
+  }
+
+  /* Editorial: thin horizontal rules */
+  hr {
+    border: 0;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+@layer components {
+  /* Preloader — editorial intro + theatrical split exit.
+     Two halves of the screen separate along the amber rule; content
+     rides with each half off the stage; the rule briefly remains as a
+     line across the revealed site, then fades. */
+  .preloader {
+    animation: preloader-in 0.3s ease-out both;
+    pointer-events: none;
+  }
+  .preloader--exiting {
+    pointer-events: none;
+  }
+
+  /* Halves — paper-coloured panels that cover the screen */
+  .preloader__half {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-background);
+    z-index: 1;
+  }
+  .preloader__half--top {
+    top: 0;
+    justify-content: flex-end;
+    padding-bottom: 1.75rem;
+  }
+  .preloader__half--bottom {
+    bottom: 0;
+    justify-content: flex-start;
+    padding-top: 1.75rem;
+    gap: 1.75rem;
+  }
+
+  .preloader-name {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: preloader-fade-up 1s var(--ease-out-soft) 0.12s forwards;
+  }
+  .preloader-welcome {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: preloader-fade-up 0.9s var(--ease-out-soft) 1.1s forwards;
+    text-align: center;
+  }
+  .preloader-mark {
+    margin-top: auto;
+    padding-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: preloader-fade-up 0.7s var(--ease-out-soft) 1.4s forwards;
+  }
+
+  /* Seam — the amber rule positioned at the split line */
+  .preloader-seam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6rem;
+    height: 1px;
+    background: var(--color-accent);
+    transform: translate(-50%, -50%) scaleX(0);
+    transform-origin: center center;
+    animation: preloader-seam-in 0.7s var(--ease-out-soft) 0.75s forwards;
+    z-index: 2;
+  }
+
+  /* === EXIT === */
+  .preloader--exiting .preloader__half--top {
+    animation: preloader-half-up 0.85s var(--ease-out-firm) 0.35s forwards;
+  }
+  .preloader--exiting .preloader__half--bottom {
+    animation: preloader-half-down 0.85s var(--ease-out-firm) 0.35s forwards;
+  }
+  .preloader--exiting .preloader-seam {
+    animation:
+      preloader-seam-expand 0.45s var(--ease-out-firm) 0.1s forwards,
+      preloader-seam-fade 0.5s ease-out 0.85s forwards;
+  }
+
+  @keyframes preloader-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes preloader-fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes preloader-seam-in {
+    from { transform: translate(-50%, -50%) scaleX(0); }
+    to { transform: translate(-50%, -50%) scaleX(1); }
+  }
+  @keyframes preloader-seam-expand {
+    from { transform: translate(-50%, -50%) scaleX(1); }
+    to { transform: translate(-50%, -50%) scaleX(40); }
+  }
+  @keyframes preloader-seam-fade {
+    to { opacity: 0; }
+  }
+  @keyframes preloader-half-up {
+    to { transform: translateY(-100%); }
+  }
+  @keyframes preloader-half-down {
+    to { transform: translateY(100%); }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background: var(--color-foreground);
+    color: var(--color-background);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: top 150ms ease;
+  }
+  .skip-link:focus-visible {
+    top: 1rem;
+  }
+
+  /* Section index numerals — editorial detail */
+  .section-index {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-muted-foreground);
+    text-transform: uppercase;
+  }
+
+  /* Stagger reveals on initial paint */
+  .stagger > * {
+    animation: var(--animate-fade-up);
+  }
+  .stagger > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger > *:nth-child(2) { animation-delay: 0.15s; }
+  .stagger > *:nth-child(3) { animation-delay: 0.25s; }
+  .stagger > *:nth-child(4) { animation-delay: 0.35s; }
+  .stagger > *:nth-child(5) { animation-delay: 0.45s; }
+  .stagger > *:nth-child(6) { animation-delay: 0.55s; }
+
+  /* Marquee — infinite horizontal ticker for project cards.
+     Composited via transform only; pauses on hover/focus-within.
+     Falls back to a snap-scroll list under prefers-reduced-motion. */
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 4%,
+      black 96%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 4%,
+      black 96%,
+      transparent 100%
+    );
+  }
+  .marquee__track {
+    display: flex;
+    gap: 1.25rem;
+    width: max-content;
+    padding-block: 0.5rem;
+    padding-inline: 1.5rem;
+    list-style: none;
+    margin: 0;
+    animation: marquee-scroll var(--motion-marquee) linear infinite;
+    will-change: transform;
+  }
+  .marquee:hover .marquee__track,
+  .marquee:focus-within .marquee__track {
+    animation-play-state: paused;
+  }
+  .marquee__item {
+    display: flex;
+  }
+  .marquee__card {
+    min-height: 17rem;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /* In-view reveal (uses IntersectionObserver toggle) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .preloader-name,
+  .preloader-welcome,
+  .preloader-mark {
+    opacity: 1;
+    transform: none;
+  }
+  .preloader-seam {
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+  /* Skip the theatrical split — just fade everything */
+  .preloader--exiting .preloader__half--top,
+  .preloader--exiting .preloader__half--bottom,
+  .preloader--exiting .preloader-seam {
+    animation: preloader-fade-out-simple 0.2s ease-out forwards !important;
+  }
+  @keyframes preloader-fade-out-simple {
+    to { opacity: 0; }
+  }
+  /* Marquee — fallback to native horizontal scroll with snapping */
+  .marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  }
+  .marquee__track {
+    animation: none !important;
+    will-change: auto;
+  }
+  .marquee__item {
+    scroll-snap-align: start;
+  }
+}
