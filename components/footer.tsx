@@ -13,7 +13,7 @@ export function Footer() {
           © {year} · {profile.name}
         </span>
         <span className="font-mono tracking-(--tracking-mono)">
-          construído com next.js · tailwind · café
+          gg<span className="text-(--color-accent)">.</span>
         </span>
       </Container>
     </footer>

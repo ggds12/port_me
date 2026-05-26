@@ -5,7 +5,7 @@ export const profile = {
   yearsAtCompany: 2,
   location: "Brasil",
   email: "",
-  bio: "Engenheiro de dados em atividade. Cuido de pipelines que vão da fonte bruta ao BigQuery: ingestão, transformação e tudo que fica no meio.",
+  bio: "Engenheiro de dados. Construo e mantenho pipelines que movem dados da fonte bruta até a camada analítica: ingestão, transformação e tudo que fica no meio.",
   longBio:
     "Atuo há dois anos como Engenheiro de Dados na ONR. Mantenho a plataforma que move dados de mais de 20 fontes (SQL Server, MySQL, PostgreSQL, APIs externas como CNJ, MAPA, ServiceNow e Google Workspace) para um data lake em GCS e BigQuery, servindo mais de 30 domínios de negócio sobre o padrão Bronze → Silver → Gold.",
   longBioExtra:

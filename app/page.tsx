@@ -5,7 +5,6 @@ import { Stack } from "@/components/sections/stack";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { CvCta } from "@/components/sections/cv-cta";
-import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/footer";
 
 export default function HomePage() {
@@ -19,7 +18,6 @@ export default function HomePage() {
         <Experience />
         <Projects />
         <CvCta />
-        <Contact />
       </main>
       <Footer />
     </>
