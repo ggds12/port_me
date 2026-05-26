@@ -8,20 +8,28 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 22,
           background: "#1a1a18",
-          color: "#faf9f5",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "serif",
-          fontStyle: "italic",
-          letterSpacing: "-0.04em",
         }}
       >
-        gg
+        <div
+          style={{
+            display: "flex",
+            alignItems: "baseline",
+            fontFamily: "ui-monospace, monospace",
+            fontWeight: 400,
+            fontSize: 15,
+            letterSpacing: "-0.04em",
+            lineHeight: 1,
+          }}
+        >
+          <span style={{ color: "#faf9f5" }}>gg</span>
+          <span style={{ color: "#d4a574" }}>.</span>
+        </div>
       </div>
     ),
     { ...size },

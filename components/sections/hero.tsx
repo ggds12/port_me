@@ -66,7 +66,7 @@ export function Hero() {
           {profile.bio}
         </p>
 
-        <div className="marquee pt-2" style={{ "--motion-marquee": "22s" } as React.CSSProperties}>
+        <div className="marquee pt-2" style={{ "--motion-marquee": "45s" } as React.CSSProperties}>
           <ul className="marquee__track" aria-label="Redes sociais">
             {track.map((s, i) => (
               <li key={i} className="marquee__item" aria-hidden={i >= socials.length}>
