@@ -7,7 +7,7 @@ import { cv } from "@/lib/cv-data";
 
 export const metadata: Metadata = {
   title: "Currículo",
-  description: `Currículo de ${profile.name}, ${profile.role} ${profile.seniority}`,
+  description: `Currículo de ${profile.name}, ${profile.role}`,
 };
 
 function SectionRow({
