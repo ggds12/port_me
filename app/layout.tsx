@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "./work-contact.css";
 import { profile } from "@/lib/data";
-import { Preloader } from "@/components/preloader";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { BackToTop } from "@/components/ui/back-to-top";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -90,8 +92,9 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Pular para o conteúdo
         </a>
-        <Preloader />
+        <ScrollProgress />
         {children}
+        <BackToTop />
       </body>
     </html>
   );

@@ -1,6 +1,8 @@
+import { SectionNumber } from "@/components/ui/section-number";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
+import { StackDeck } from "@/components/ui/stack-deck";
 import { stack } from "@/lib/data";
 
 export function Stack() {
@@ -8,9 +10,10 @@ export function Stack() {
     <Container
       as="section"
       id="stack"
-      className="border-t border-(--color-border) py-20 sm:py-28"
+      className="numbered-section border-t border-(--color-border) py-20 sm:py-28"
     >
-      <Reveal>
+      <SectionNumber value="02" />
+      <Reveal variant="clip">
         <SectionHeading
           index="02"
           eyebrow="Stack"
@@ -18,29 +21,10 @@ export function Stack() {
         />
       </Reveal>
 
-      <dl className="mt-12 divide-y divide-(--color-border) border-t border-(--color-border)">
-        {stack.map((group, idx) => (
-          <Reveal
-            key={group.group}
-            delay={idx * 80}
-            className="grid grid-cols-1 gap-4 py-6 sm:grid-cols-[160px_1fr] sm:gap-8"
-          >
-            <dt className="section-index pt-1">{group.group}</dt>
-            <dd>
-              <ul className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-sm tracking-(--tracking-mono)">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="text-(--color-foreground)"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </dd>
-          </Reveal>
-        ))}
-      </dl>
+      {/* Baralho de cartas — clique para passar o card da frente para trás */}
+      <Reveal delay={80}>
+        <StackDeck groups={stack} />
+      </Reveal>
     </Container>
   );
 }

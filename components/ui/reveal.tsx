@@ -8,6 +8,8 @@ type RevealProps = {
   className?: string;
   delay?: number;
   as?: "div" | "section" | "article" | "li";
+  /** "fade" (padrão) sobe suavemente; "clip" revela como uma cortina. */
+  variant?: "fade" | "clip";
 };
 
 export function Reveal({
@@ -15,6 +17,7 @@ export function Reveal({
   className,
   delay = 0,
   as: Tag = "div",
+  variant = "fade",
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -48,7 +51,7 @@ export function Reveal({
   return (
     <Tag
       ref={ref as never}
-      className={cn("reveal", className)}
+      className={cn(variant === "clip" ? "reveal-clip" : "reveal", className)}
       data-visible={visible ? "true" : "false"}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >

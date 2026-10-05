@@ -1,3 +1,4 @@
+import { SectionNumber } from "@/components/ui/section-number";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -8,9 +9,10 @@ export function Experience() {
     <Container
       as="section"
       id="experiencia"
-      className="border-t border-(--color-border) py-20 sm:py-28"
+      className="numbered-section border-t border-(--color-border) py-20 sm:py-28"
     >
-      <Reveal>
+      <SectionNumber value="03" />
+      <Reveal variant="clip">
         <SectionHeading
           index="03"
           eyebrow="Experiência"

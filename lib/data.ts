@@ -1,13 +1,13 @@
 export const profile = {
   name: "Gustavo Gomes",
   role: "Engenheiro de Dados",
-  company: "ONR",
-  yearsAtCompany: 2,
+  company: "",
+  yearsAtCompany: 0,
   location: "Brasil",
   email: "",
   bio: "Engenheiro de dados. Construo e mantenho pipelines que movem dados da fonte bruta até a camada analítica: ingestão, transformação e tudo que fica no meio.",
   longBio:
-    "Atuo há dois anos como Engenheiro de Dados na ONR. Mantenho a plataforma que move dados de mais de 20 fontes (SQL Server, MySQL, PostgreSQL, APIs externas como CNJ, MAPA, ServiceNow e Google Workspace) para um data lake em GCS e BigQuery, servindo mais de 30 domínios de negócio sobre o padrão Bronze → Silver → Gold.",
+    "Atuo como Engenheiro de Dados, construindo e mantendo plataformas que movem dados de mais de 20 fontes (SQL Server, MySQL, PostgreSQL, APIs externas como CNJ, MAPA, ServiceNow e Google Workspace) para um data lake em GCS e BigQuery, servindo mais de 30 domínios de negócio sobre o padrão Bronze → Silver → Gold.",
   longBioExtra:
     "O trabalho se divide em três frentes: um microserviço de ingestão em Go com WorkerPool, circuit breaker e locks distribuídos via Redis; pipelines Apache Beam no Dataflow para transformações em escala; e orquestração de tudo via Airflow 3 com CI/CD no Azure Pipelines. Observabilidade com OpenTelemetry, Datadog APM e Prometheus fecha o ciclo.",
   links: {
@@ -20,14 +20,29 @@ export const profile = {
 export const stack = [
   {
     group: "Linguagens",
+    tagline: "A base de tudo que escrevo.",
+    description:
+      "Go para serviços de alta concorrência, Python para pipelines e análise, SQL como língua franca dos dados.",
     items: ["Go", "Python", "SQL"],
   },
   {
     group: "Pipelines & Orquestração",
-    items: ["Apache Airflow 3", "Apache Beam", "Google Dataflow", "RabbitMQ", "Azure Pipelines"],
+    tagline: "Onde o dado ganha movimento.",
+    description:
+      "Orquestração de centenas de DAGs e transformações em escala, do agendamento ao processamento distribuído.",
+    items: [
+      "Apache Airflow 3",
+      "Apache Beam",
+      "Google Dataflow",
+      "RabbitMQ",
+      "Azure Pipelines",
+    ],
   },
   {
     group: "Cloud (GCP)",
+    tagline: "A infraestrutura que sustenta o fluxo.",
+    description:
+      "Serviços gerenciados do Google Cloud que hospedam o data lake, o processamento e a camada analítica.",
     items: [
       "BigQuery",
       "Cloud Storage",
@@ -39,18 +54,37 @@ export const stack = [
   },
   {
     group: "Dados & Formatos",
-    items: ["Polars", "Trino", "Parquet / Arrow", "PyArrow", "Pydantic", "Power BI"],
+    tagline: "Como o dado é lido, escrito e servido.",
+    description:
+      "Formatos colunares e ferramentas de manipulação que tornam consultas grandes rápidas e baratas.",
+    items: [
+      "Polars",
+      "Trino",
+      "Parquet / Arrow",
+      "PyArrow",
+      "Pydantic",
+      "Power BI",
+    ],
   },
   {
     group: "Observabilidade",
+    tagline: "Se não é medido, não está funcionando.",
+    description:
+      "Métricas, traces e linhagem para enxergar cada pipeline de ponta a ponta e agir antes que quebre.",
     items: ["Datadog APM", "OpenTelemetry", "Prometheus", "OpenLineage"],
   },
   {
     group: "Mensageria & Infra",
+    tagline: "A espinha dorsal da operação.",
+    description:
+      "Filas, containers e infraestrutura como código que mantêm os serviços distribuídos de pé.",
     items: ["RabbitMQ", "Kubernetes", "Redis", "Docker", "Terraform"],
   },
   {
     group: "Bancos de Dados",
+    tagline: "As fontes de onde tudo nasce.",
+    description:
+      "Bancos relacionais que conecto, extraio e transformo rumo à camada analítica.",
     items: ["SQL Server", "MySQL", "PostgreSQL"],
   },
 ] as const;
@@ -59,9 +93,9 @@ export const experience = [
   {
     role: "Engenheiro de Dados",
     company: "ONR",
-    period: "2024 · Presente",
+    period: "2024 · 2026",
     summary:
-      "Responsável pela plataforma de dados que conecta mais de 20 fontes ao data lake em GCS e BigQuery, servindo mais de 30 domínios de negócio. Atuo em três frentes que se complementam: ingestão em Go, pipelines Apache Beam e orquestração com Airflow 3.",
+      "Responsável pela plataforma de dados que conecta mais de 20 fontes ao data lake em GCS e BigQuery, servindo mais de 30 domínios de negócio. Atuei em três frentes que se complementam: ingestão em Go, pipelines Apache Beam e orquestração com Airflow 3.",
     highlights: [
       "Desenvolvimento e manutenção de pipelines de ingestão em larga escala com Apache Airflow 3 e Google Cloud Dataflow (Apache Beam), orquestrados em Cloud Run com CI/CD via Azure Pipelines, garantindo disponibilidade contínua de dados para mais de 30 domínios de negócio.",
       "Implementação de plataforma centralizada de ingestão em Go com suporte a múltiplas fontes (SQL Server, MySQL, PostgreSQL, BigQuery, Datastore e APIs externas), transformação para Parquet via Apache Arrow, armazenamento em GCS com processamento distribuído via RabbitMQ e Kubernetes, locks distribuídos com Redis e padrões avançados como circuit breaker e worker pool dinâmico.",

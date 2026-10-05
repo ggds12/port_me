@@ -7,6 +7,8 @@ import { Projects } from "@/components/sections/projects";
 import { CvCta } from "@/components/sections/cv-cta";
 import { Footer } from "@/components/footer";
 
+import { Contact } from "@/components/sections/contact";
+
 export default function HomePage() {
   return (
     <>
@@ -18,6 +20,7 @@ export default function HomePage() {
         <Experience />
         <Projects />
         <CvCta />
+        <Contact />
       </main>
       <Footer />
     </>

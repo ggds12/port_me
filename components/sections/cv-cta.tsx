@@ -1,15 +1,18 @@
+import { SectionNumber } from "@/components/ui/section-number";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { Magnetic } from "@/components/ui/magnetic";
 
 export function CvCta() {
   return (
     <Container
       as="section"
       id="curriculo"
-      className="border-t border-(--color-border) py-20 sm:py-28"
+      className="numbered-section border-t border-(--color-border) py-20 sm:py-28"
     >
-      <Reveal>
+      <SectionNumber value="05" />
+      <Reveal variant="clip">
         <div className="grid grid-cols-1 items-end gap-10 sm:grid-cols-[1fr_auto]">
           <div className="max-w-xl">
             <div className="flex items-center gap-3 text-(--color-muted-foreground)">
@@ -31,26 +34,31 @@ export function CvCta() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 sm:flex-col sm:items-stretch">
-            <Link
-              href="/cv"
-              className="group inline-flex items-center justify-between gap-3 rounded-full border border-(--color-foreground) bg-(--color-foreground) px-5 py-2.5 text-sm text-(--color-background) transition-colors hover:bg-transparent hover:text-(--color-foreground)"
-            >
-              <span>Ver currículo</span>
-              <span
-                aria-hidden
-                className="transition-transform group-hover:translate-x-0.5"
+            <Magnetic className="inline-flex">
+              <Link
+                href="/cv"
+                className="group inline-flex items-center justify-between gap-3 rounded-full border border-(--color-foreground) bg-(--color-foreground) px-5 py-2.5 text-sm text-(--color-background) transition-colors hover:bg-transparent hover:text-(--color-foreground)"
               >
-                →
-              </span>
-            </Link>
-            <a
-              href="/gustavo-gomes-cv.pdf"
-              download
-              className="inline-flex items-center justify-between gap-3 rounded-full border border-(--color-border) px-5 py-2.5 font-mono text-xs tracking-(--tracking-mono) text-(--color-muted-foreground) transition-colors hover:border-(--color-foreground)/30 hover:text-(--color-foreground)"
-            >
-              <span>baixar pdf</span>
-              <span aria-hidden>↓</span>
-            </a>
+                <span>Ver currículo</span>
+                <span
+                  aria-hidden
+                  className="transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </Link>
+            </Magnetic>
+
+            <Magnetic className="inline-flex">
+              <a
+                href="/gustavo-gomes-cv.pdf"
+                download
+                className="inline-flex items-center justify-between gap-3 rounded-full border border-(--color-border) px-5 py-2.5 font-mono text-xs tracking-(--tracking-mono) text-(--color-muted-foreground) transition-colors hover:border-(--color-foreground)/30 hover:text-(--color-foreground)"
+              >
+                <span>baixar pdf</span>
+                <span aria-hidden>↓</span>
+              </a>
+            </Magnetic>
           </div>
         </div>
       </Reveal>

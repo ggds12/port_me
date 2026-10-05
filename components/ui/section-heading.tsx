@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { TextReveal } from "@/components/ui/text-reveal";
 
 type SectionHeadingProps = {
   index: string;
@@ -13,6 +14,10 @@ export function SectionHeading({
   title,
   className,
 }: SectionHeadingProps) {
+  // Se o título for uma string simples, aplica o reveal palavra a palavra.
+  // Caso contrário (JSX com <em> etc.), renderiza como está.
+  const isPlainText = typeof title === "string";
+
   return (
     <header className={cn("flex flex-col gap-3", className)}>
       <div className="flex items-center gap-3 text-(--color-muted-foreground)">
@@ -21,7 +26,11 @@ export function SectionHeading({
         <span className="section-index">{eyebrow}</span>
       </div>
       <h2 className="font-serif text-3xl tracking-(--tracking-tighter) sm:text-4xl">
-        {title}
+        {isPlainText ? (
+          <TextReveal as="span" text={title as string} />
+        ) : (
+          title
+        )}
       </h2>
     </header>
   );

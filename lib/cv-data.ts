@@ -24,9 +24,9 @@ export const cv = {
     {
       title: "Engenheiro de Dados",
       company: "ONR",
-      period: "2024 · Presente",
+      period: "2024 — ago. 2026",
       summary:
-        "Mantenho a plataforma de dados que conecta dezenas de fontes ao data lake em GCS + BigQuery. Atuo em três frentes: ingestão em Go, pipelines Apache Beam e orquestração com Airflow 3.",
+        "Desenvolvi e mantive a plataforma de dados que conecta dezenas de fontes ao data lake em GCS + BigQuery. Atuei em três frentes: ingestão em Go, pipelines Apache Beam e orquestração com Airflow 3.",
       highlights: [
         "Mais de 100 DAGs no Airflow 3 sobre o padrão Bronze → Silver → Gold, com TaskFlow API e auditoria estruturada via listener customizado.",
         "Microserviço Go com WorkerPool, circuit breakers e distributed locks (Redis), consumindo RabbitMQ e escrevendo Parquet/Arrow particionado no GCS.",
