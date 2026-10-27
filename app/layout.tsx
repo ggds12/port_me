@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import "./work-contact.css";
+
 import { profile } from "@/lib/data";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { BackToTop } from "@/components/ui/back-to-top";
+
 
 const geist = Geist({
   subsets: ["latin"],
@@ -26,7 +25,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://gustavogomes.dev";
+const siteUrl = "https://ggds.tech";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -55,8 +54,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf9f5" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1a18" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#111111" },
   ],
 };
 
@@ -92,9 +91,9 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Pular para o conteúdo
         </a>
-        <ScrollProgress />
+
         {children}
-        <BackToTop />
+
       </body>
     </html>
   );
