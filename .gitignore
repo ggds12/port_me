@@ -43,3 +43,6 @@ next-env.d.ts
 /.shots/
 /tmp/
 /dev.log
+
+# build de teste (NEXT_DIST_DIR=.next-check)
+/.next-check/
