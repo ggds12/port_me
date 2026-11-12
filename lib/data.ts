@@ -1,5 +1,6 @@
 export const profile = {
   name: "Gustavo Gomes",
+  fullName: "Gustavo Gomes dos Santos",
   role: "Engenheiro de Dados",
   company: "",
   yearsAtCompany: 0,

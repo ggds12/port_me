@@ -5,11 +5,11 @@ export const pt: Dict = {
   ogLocale: "pt_BR",
   numberLocale: "pt-BR",
   meta: {
-    title: "Gustavo Gomes · Engenheiro de Dados",
+    title: "Gustavo Gomes dos Santos · Engenheiro de Dados",
     description:
-      "Engenheiro de dados. Construo e mantenho pipelines que movem dados da fonte bruta até a camada analítica: ingestão, transformação e tudo que fica no meio.",
-    cvTitle: "Currículo · Gustavo Gomes",
-    cvDescription: "Experiência, formação e competências de Gustavo Gomes, Engenheiro de Dados.",
+      "Gustavo Gomes dos Santos — engenheiro de dados. Construo e mantenho pipelines que movem dados da fonte bruta até a camada analítica: ingestão, transformação e tudo que fica no meio.",
+    cvTitle: "Currículo · Gustavo Gomes dos Santos",
+    cvDescription: "Experiência, formação e competências de Gustavo Gomes dos Santos, Engenheiro de Dados.",
   },
   skip: "Pular para o conteúdo",
   role: "Engenheiro de Dados",

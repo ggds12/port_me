@@ -5,11 +5,11 @@ export const en: Dict = {
   ogLocale: "en_US",
   numberLocale: "en-US",
   meta: {
-    title: "Gustavo Gomes · Data Engineer",
+    title: "Gustavo Gomes dos Santos · Data Engineer",
     description:
-      "Data engineer. I build and maintain pipelines that move data from raw sources to the analytics layer: ingestion, transformation and everything in between.",
-    cvTitle: "Résumé · Gustavo Gomes",
-    cvDescription: "Experience, education and skills of Gustavo Gomes, Data Engineer.",
+      "Gustavo Gomes dos Santos — data engineer. I build and maintain pipelines that move data from raw sources to the analytics layer: ingestion, transformation and everything in between.",
+    cvTitle: "Résumé · Gustavo Gomes dos Santos",
+    cvDescription: "Experience, education and skills of Gustavo Gomes dos Santos, Data Engineer.",
   },
   skip: "Skip to content",
   role: "Data Engineer",
